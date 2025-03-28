@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>四柱推命 命式作成</title>
+
+  <link rel="stylesheet" href="zodiac_app/css/hatizi.css">
+  <link rel="stylesheet" href="zodiac_app/css/ress.min.css">
+  <script src="https://kit.fontawesome.com/dbdf1c424a.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54047313-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-54047313-1');
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="contents_width">
+      <h1 class="header-ttl">
+        <a href="zodiac.html">
+          <i class="fas fa-yin-yang"></i>&ensp;命式作成ツール
+        </a>
+      </h1>
+      <nav class="header-nav no-sp">
+        <ul class="header-nav-list">
+          <li class="header-nav-item"><a href="https://www.mituki-y.com/">ホーム</a></li>
+          <li class="header-nav-item"><a href="zodiac.html">命式作成</a></li>
+          <li class="header-nav-item"><a href="solar-time.html">真正生時</a></li>
+        </ul>
+      </nav>
+      <div class="no-pc hamburger_icon">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="no-pc hamburger-nav">
+        <ul>
+          <li><a href="https://www.mituki-y.com/" target="_blank">ホーム</a></li>
+          <li><a href="zodiac.html">命式作成</a></li>
+          <li><a href="solar-time.html" target="_blank">真正生時</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <section class="hatizi_contents">
+    <div class="contents_width">
+      <h3 class="attention"><i class="fas fa-pen-nib"></i>&ensp;ご利用前にお読みください。</h3>
+      <div class="spec">
+        <ul>
+          <li>&nbsp;現在は昭和1年～令和7年まで対応しています。対応期間外の生年月日は正しく表示されません。</li>
+          <li>&nbsp;正しい出生時刻は<a href="solar-time.html">こちらのページ</a>で確認してから入力してください。</li>
+          <li>&nbsp;大運は小数点以下の数字は切り捨てして計算しています。</li>
+          <li>&nbsp;1回のご利用ごとにリセットボタンを押してください。</li>
+          <li>&nbsp;節入り時刻の前後1時間以内の生まれの方は、正しい八字が表示されないケースがあります。</li>
+        </ul>
+      </div>
+      <div class="meiri-form_contents">
+        <form id="meiri-form">
+          <table class="hatizi_table">
+            <tr>
+              <th>
+                <h3>性別</h3>
+              </th>
+              <td>
+                <input class="jend" type="radio" name="jend" value="Ma" checked><span class="jend_man">男性</span>
+                <input class="jend" type="radio" name="jend" value="Fe"><span>女性</span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <h3>生年月日</h3>
+              </th>
+              <td>
+                <div class="ymd-data">
+                  <div>
+                    <select id="wareki">
+                      <option value="syowa">昭和</option>
+                      <option value="heisei">平成</option>
+                      <option value="reiwa">令和</option>
+                    </select>
+                    <select id="year">
+                      <option value="1" selected>1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                      <option value="32">32</option>
+                      <option value="33">33</option>
+                      <option value="34">34</option>
+                      <option value="35">35</option>
+                      <option value="36">36</option>
+                      <option value="37">37</option>
+                      <option value="38">38</option>
+                      <option value="39">39</option>
+                      <option value="40">40</option>
+                      <option value="41">41</option>
+                      <option value="42">42</option>
+                      <option value="43">43</option>
+                      <option value="44">44</option>
+                      <option value="45">45</option>
+                      <option value="46">46</option>
+                      <option value="47">47</option>
+                      <option value="48">48</option>
+                      <option value="49">49</option>
+                      <option value="50">50</option>
+                      <option value="51">51</option>
+                      <option value="52">52</option>
+                      <option value="53">53</option>
+                      <option value="54">54</option>
+                      <option value="55">55</option>
+                      <option value="56">56</option>
+                      <option value="57">57</option>
+                      <option value="58">58</option>
+                      <option value="59">59</option>
+                      <option value="60">60</option>
+                      <option value="61">61</option>
+                      <option value="62">62</option>
+                      <option value="63">63</option>
+                    </select>
+                    <span>年</span>
+                  </div>
+                  <div>
+                    <select name="lists_a" id="month">
+                      <option value="1" selected>1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select><span>月</span>
+                  </div>
+                  <div>
+                    <select name="lists_b" id="day">
+                      <option value="1" selected>1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                    </select><span>日</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <h3>出生時間</h3>
+              </th>
+              <td>
+                <select name="lists_c" id="hour">
+                  <option value="0" selected>00</option>
+                  <option value="1">01</option>
+                  <option value="2">02</option>
+                  <option value="3">03</option>
+                  <option value="4">04</option>
+                  <option value="5">05</option>
+                  <option value="6">06</option>
+                  <option value="7">07</option>
+                  <option value="8">08</option>
+                  <option value="9">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option selected value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                </select><span>時</span>
+
+                <select name="lists_d" id="min">
+                  <option value="0" selected>00</option>
+                  <option value="1">01</option>
+                  <option value="2">02</option>
+                  <option value="3">03</option>
+                  <option value="4">04</option>
+                  <option value="5">05</option>
+                  <option value="6">06</option>
+                  <option value="7">07</option>
+                  <option value="8">08</option>
+                  <option value="9">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                  <option value="32">32</option>
+                  <option value="33">33</option>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+                  <option value="36">36</option>
+                  <option value="37">37</option>
+                  <option value="38">38</option>
+                  <option value="39">39</option>
+                  <option value="40">40</option>
+                  <option value="41">41</option>
+                  <option value="42">42</option>
+                  <option value="43">43</option>
+                  <option value="44">44</option>
+                  <option value="45">45</option>
+                  <option value="46">46</option>
+                  <option value="47">47</option>
+                  <option value="48">48</option>
+                  <option value="49">49</option>
+                  <option value="50">50</option>
+                  <option value="51">51</option>
+                  <option value="52">52</option>
+                  <option value="53">53</option>
+                  <option value="54">54</option>
+                  <option value="55">55</option>
+                  <option value="56">56</option>
+                  <option value="57">57</option>
+                  <option value="58">58</option>
+                  <option value="59">59</option>
+                </select><span>分</span>
+              </td>
+            </tr>
+          </table>
+          <div class="btn">
+            <div class="meisiki_btn">
+              <input type="button" value="命式作成" id="meisiki">
+            </div>
+            <div class="reset_btn">
+              <input type="reset" value="リセット" id="resetButton">
+            </div>
+          </div>
+        </form>
+
+        <table class="create_data">
+          <tr>
+            <th>
+              年柱
+            </th>
+            <td>
+              <p><span id="msg"></span></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              月柱
+            </th>
+            <td>
+              <p><span id="msg2">&nbsp</span><span id="msg5"></span></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              日柱
+            </th>
+            <td>
+              <p><span id="msg3"></span></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              時柱
+            </th>
+            <td>
+              <p><span id="msg4"></span></p>
+            </td>
+          </tr>
+          <tr>
+            <th>大運</th>
+            <td>
+              <p><span id="msgdaiun"></span></p>
+              <p><span id="msgdaiun1"></span></p>
+              <p><span id="msgdaiun2"></span></p>
+              <p><span id="msgdaiun3"></span></p>
+              <p><span id="msgdaiun4"></span></p>
+              <p><span id="msgdaiun5"></span></p>
+              <p><span id="msgdaiun6"></span></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>©&nbsp;Miwa&thinsp;LLC.</p>
+  </footer>
+  <script src="zodiac_app/js/koyomi.js"></script>
+  <script src="zodiac_app/js/main.js"></script>
+</body>
+
+</html>

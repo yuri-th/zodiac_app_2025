@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>真正生時（真太陽時）</title>
+
+  <link rel="stylesheet" href="zodiac_app/css/solar-time.css">
+  <link rel="stylesheet" href="zodiac_app/css/ress.min.css">
+  <script src="https://kit.fontawesome.com/dbdf1c424a.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54047313-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-54047313-1');
+  </script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="contents_width">
+      <h1 class="header-ttl">
+        <a href="zodiac.html">
+          <i class="fas fa-yin-yang"></i>&ensp;命式作成ツール
+        </a>
+      </h1>
+      <nav class="header-nav no-sp">
+        <ul class="header-nav-list">
+          <li class="header-nav-item"><a href="https://www.mituki-y.com/">ホーム</a></li>
+          <li class="header-nav-item"><a href="zodiac.html">命式作成</a></li>
+          <li class="header-nav-item"><a href="solar-time.html">真正生時</a></li>
+        </ul>
+      </nav>
+      <div class="no-pc hamburger_icon">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="no-pc hamburger-nav">
+        <ul>
+          <li><a href="https://www.mituki-y.com/" target="_blank">ホーム</a></li>
+          <li><a href="zodiac.html">命式作成</a></li>
+          <li><a href="solar-time.html" target="_blank">真正生時</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <section class="solar-time_contents">
+    <div class="contents_width" id="inner">
+      <h3 class="attention"><i class="far fa-sun"></i>&ensp;出生時刻を正しい太陽時間に修正します。</h3>
+      <div class="spec">
+        <ul>
+          <li>&nbsp;現在は昭和1年～令和7年まで対応しています。対応期間外は正しく表示されません。</li>
+          <li>&nbsp;経度差、均時差は秒は切り捨てしています。</li>
+          <li>&nbsp;該当する出生地がない場合は、出生地に一番近い市を選んでください。</li>
+          <li>&nbsp;1回のご利用ごとにリセットボタンを押してください。</li>
+        </ul>
+      </div>
+      <div class="time-form_contents">
+        <form id="time-form">
+          <table class="time-table">
+            <tr>
+              <th>
+                <h3>生年月日</h3>
+              </th>
+              <td>
+                <div class="ymd-data">
+                  <div>
+                    <select id="wareki">
+                      <option value="syowa">昭和</option>
+                      <option value="heisei">平成</option>
+                      <option value="reiwa">令和</option>
+                    </select>
+                    <select id="year">
+                      <option value="1" selected>1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                      <option value="32">32</option>
+                      <option value="33">33</option>
+                      <option value="34">34</option>
+                      <option value="35">35</option>
+                      <option value="36">36</option>
+                      <option value="37">37</option>
+                      <option value="38">38</option>
+                      <option value="39">39</option>
+                      <option value="40">40</option>
+                      <option value="41">41</option>
+                      <option value="42">42</option>
+                      <option value="43">43</option>
+                      <option value="44">44</option>
+                      <option value="45">45</option>
+                      <option value="46">46</option>
+                      <option value="47">47</option>
+                      <option value="48">48</option>
+                      <option value="49">49</option>
+                      <option value="50">50</option>
+                      <option value="51">51</option>
+                      <option value="52">52</option>
+                      <option value="53">53</option>
+                      <option value="54">54</option>
+                      <option value="55">55</option>
+                      <option value="56">56</option>
+                      <option value="57">57</option>
+                      <option value="58">58</option>
+                      <option value="59">59</option>
+                      <option value="60">60</option>
+                      <option value="61">61</option>
+                      <option value="62">62</option>
+                      <option value="63">63</option>
+                    </select><span>年</span>
+                  </div>
+                  <div>
+                    <select name="lists_a" id="month">
+                      <option value="1" selected>1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select><span>月</span>
+                  </div>
+                  <div>
+                    <select name="lists_b" id="day">
+                      <option value="1" selected>1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                    </select><span>日</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <h3>出生時間</h3>
+              </th>
+              <td>
+                <div>
+                  <select name="lists_c" id="hour">
+                    <option value="0">00</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option selected value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                  </select><span>時</span>
+                  <select name="lists_d" id="min">
+                    <option selected value="0">00</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                    <option value="49">49</option>
+                    <option value="50">50</option>
+                    <option value="51">51</option>
+                    <option value="52">52</option>
+                    <option value="53">53</option>
+                    <option value="54">54</option>
+                    <option value="55">55</option>
+                    <option value="56">56</option>
+                    <option value="57">57</option>
+                    <option value="58">58</option>
+                    <option value="59">59</option>
+                  </select><span>分</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <h3>出生地</h3>
+              </th>
+              <td>
+                <select name="lists_e" id="local">
+                  <option value="" disabled>北海道</option>
+                  <option value="42">根室</option>
+                  <option value="38">釧路</option>
+                  <option value="37">網走</option>
+                  <option value="30">旭川</option>
+                  <option value="25">札幌</option>
+                  <option value="24">小樽</option>
+                  <option value="23">函館</option>
+                  <option value="" disabled>青森県</option>
+                  <option value="26">八戸</option>
+                  <option value="23">青森</option>
+                  <option value="22">弘前</option>
+                  <option value="" disabled>岩手県</option>
+                  <option value="28">宮古</option>
+                  <option value="25">盛岡</option>
+                  <option value="" disabled>秋田県</option>
+                  <option value="20">秋田</option>
+                  <option value="22">横手</option>
+                  <option value="20">本庄</option>
+                  <option value="" disabled>宮城県</option>
+                  <option value="26">気仙沼</option>
+                  <option value="25">石巻</option>
+                  <option value="24">仙台</option>
+                  <option value="" disabled>山形県</option>
+                  <option value="22">山形</option>
+                  <option value="21">新庄</option>
+                  <option value="20">米沢</option>
+                  <option value="" disabled>福島県</option>
+                  <option value="24">いわき</option>
+                  <option value="22">福島</option>
+                  <option value="20">喜多方</option>
+                  <option value="" disabled>茨城県</option>
+                  <option value="22">水戸</option>
+                  <option value="20">つくば</option>
+                  <option value="" disabled>栃木県</option>
+                  <option value="20">宇都宮</option>
+                  <option value="19">栃木</option>
+                  <option value="18">足利</option>
+                  <option value="" disabled>群馬県</option>
+                  <option value="16">前橋</option>
+                  <option value="17">桐生</option>
+                  <option value="16">高崎</option>
+                  <option value="" disabled>埼玉県</option>
+                  <option value="19">浦和</option>
+                  <option value="18">所沢</option>
+                  <option value="16">秩父</option>
+                  <option value="" disabled>千葉県</option>
+                  <option value="23">銚子</option>
+                  <option value="20">習志野</option>
+                  <option value="20">船橋</option>
+                  <option selected value="" disabled>東京都</option>
+                  <option value="19">文京区</option>
+                  <option value="19">港区</option>
+                  <option value="18">小平</option>
+                  <option value="17">青梅</option>
+                  <option value="" disabled>神奈川県</option>
+                  <option value="19">川崎</option>
+                  <option value="19">横浜</option>
+                  <option value="18">藤沢</option>
+                  <option value="17">秦野</option>
+                  <option value="" disabled>山梨県</option>
+                  <option value="14">甲府</option>
+                  <option value="15">山梨</option>
+                  <option value="" disabled>長野県</option>
+                  <option value="13">長野</option>
+                  <option value="12">松本</option>
+                  <option value="13">上田</option>
+                  <option value="11">飯田</option>
+                  <option value="" disabled>静岡県</option>
+                  <option value="15">富士</option>
+                  <option value="14">清水</option>
+                  <option value="13">静岡</option>
+                  <option value="12">掛川</option>
+                  <option value="" disabled>新潟県</option>
+                  <option value="16">新潟</option>
+                  <option value="15">十日町</option>
+                  <option value="13">上越</option>
+                  <option value="" disabled>富山県</option>
+                  <option value="9">富山</option>
+                  <option value="10">黒部</option>
+                  <option value="8">氷見</option>
+                  <option value="" disabled>石川県</option>
+                  <option value="7">金沢</option>
+                  <option value="6">小松</option>
+                  <option value="5">加賀</option>
+                  <option value="" disabled>福井県</option>
+                  <option value="5">福井</option>
+                  <option value="4">敦賀</option>
+                  <option value="3">小浜</option>
+                  <option value="" disabled>岐阜県</option>
+                  <option value="7">岐阜</option>
+                  <option value="9">高山</option>
+                  <option value="8">関</option>
+                  <option value="" disabled>愛知県</option>
+                  <option value="8">名古屋</option>
+                  <option value="7">一宮</option>
+                  <option value="9">岡崎</option>
+                  <option value="" disabled>三重県</option>
+                  <option value="6">津</option>
+                  <option value="7">伊勢</option>
+                  <option value="5">尾鷹</option>
+                  <option value="" disabled>滋賀県</option>
+                  <option value="5">彦根</option>
+                  <option value="4">草津</option>
+                  <option value="3">大津</option>
+                  <option value="" disabled>京都府</option>
+                  <option value="3">京都</option>
+                  <option value="1">綾部</option>
+                  <option value="" disabled>奈良県</option>
+                  <option value="3">奈良</option>
+                  <option value="" disabled>和歌山県</option>
+                  <option value="1">和歌山</option>
+                  <option value="2">橋本</option>
+                  <option value="" disabled>大阪府</option>
+                  <option value="2">大阪</option>
+                  <option value="1">泉佐野</option>
+                  <option value="" disabled>兵庫県</option>
+                  <option value="1">神戸</option>
+                  <option value="0">明石</option>
+                  <option value="-1">姫路</option>
+                  <option value="-2">相生</option>
+                  <option value="" disabled>岡山県</option>
+                  <option value="-4">岡山</option>
+                  <option value="-6">新見</option>
+                  <option value="" disabled>鳥取県</option>
+                  <option value="-3">鳥取</option>
+                  <option value="-5">倉吉</option>
+                  <option value="-7">境港</option>
+                  <option value="" disabled>島根県</option>
+                  <option value="-9">出雲</option>
+                  <option value="-8">松江</option>
+                  <option value="-12">浜田</option>
+                  <option value="" disabled>広島県</option>
+                  <option value="-10">広島</option>
+                  <option value="-7">尾道</option>
+                  <option value="" disabled>山口県</option>
+                  <option value="-14">山口</option>
+                  <option value="-16">下関</option>
+                  <option value="-15">宇部</option>
+                  <option value="" disabled>香川県</option>
+                  <option value="-4">高松</option>
+                  <option value="-5">丸亀</option>
+                  <option value="" disabled>徳島県</option>
+                  <option value="-2">徳島</option>
+                  <option value="-5">三好</option>
+                  <option value="" disabled>愛媛県</option>
+                  <option value="-9">松山</option>
+                  <option value="-8">今治</option>
+                  <option value="-10">宇和島</option>
+                  <option value="" disabled>高知県</option>
+                  <option value="-6">高知</option>
+                  <option value="-4">安芸</option>
+                  <option value="-9">宿毛</option>
+                  <option value="" disabled>福岡県</option>
+                  <option value="-18">福岡</option>
+                  <option value="-17">北九州</option>
+                  <option value="" disabled>佐賀県</option>
+                  <option value="-19">佐賀</option>
+                  <option value="-20">唐津</option>
+                  <option value="" disabled>長崎県</option>
+                  <option value="-20">長崎</option>
+                  <option value="-21">佐世保</option>
+                  <option value="" disabled>大分県</option>
+                  <option value="-14">別府</option>
+                  <option value="-16">日田</option>
+                  <option value="" disabled>熊本県</option>
+                  <option value="-17">熊本</option>
+                  <option value="-18">水俣</option>
+                  <option value="-17">人吉</option>
+                  <option value="" disabled>宮崎県</option>
+                  <option value="-14">宮崎</option>
+                  <option value="-13">延岡</option>
+                  <option value="-16">都城</option>
+                  <option value="" disabled>鹿児島県</option>
+                  <option value="-18">鹿児島</option>
+                  <option value="-19">枕崎</option>
+                  <option value="-16">西之表</option>
+                  <option value="" disabled>沖縄県</option>
+                  <option value="-29">那覇</option>
+                  <option value="-29">沖縄</option>
+                  <option value="-28">名護</option>
+                  <option value="-43">石垣</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          <div class="btn">
+            <div class="time_btn">
+              <input type="button" value="真正生時" id="sinsei">
+            </div>
+            <div class="reset_btn">
+              <input type="reset" value="リセット" id="resetButton">
+            </div>
+          </div>
+        </form>
+
+        <table class="create_data">
+          <tr>
+            <th>
+              経度差
+            </th>
+            <td>
+              <p span id="msg2"></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              均時差
+            </th>
+            <td>
+              <p id="msg3"></p>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              真正生時
+            </th>
+            <td>
+              <p id="msg"></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>©&nbsp;Miwa&thinsp;LLC.</p>
+  </footer>
+  <script src="zodiac_app/js/fix.js"></script>
+  <script src="zodiac_app/js/main.js"></script>
+</body>
+
+</html>

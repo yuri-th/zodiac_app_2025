@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700;900&display=swap");
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+* {
+  line-height: 1.2;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial,
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 1.6rem;
+  color: #333333;
+  line-height: 1.2;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: #fffff0;
+}
+
+.contents_width {
+  margin: 0 auto;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.no-pc {
+  display: none;
+}
+
+.no-sp {
+  display: block;
+}
+
+input {
+  outline: none;
+}
+
+/* ヘッダー*/
+
+.header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header {
+  width: 100%;
+  background-color: #12327d;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.header-ttl {
+  font-size: 3.2rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-nav-list {
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  gap: 50px;
+  font-size: 1.8rem;
+  list-style: none;
+}
+
+/* スペック */
+.hatizi_contents {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.attention {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.spec {
+  border: solid 1.5px olive;
+  margin-bottom: 50px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.spec ul li {
+  font-size: 1.8rem;
+  line-height: 5rem;
+  list-style: none;
+}
+
+.spec ul li::before {
+  content: "\f14a";
+  font-family: "Font Awesome 5 Free";
+}
+
+/*入力テーブル*/
+
+.meiri-form_contents {
+  margin: 0 auto;
+}
+
+.hatizi_table {
+  margin: 0 auto;
+}
+
+.jend {
+  width: 20px;
+  height: 20px;
+  vertical-align: bottom;
+}
+
+.jend_man {
+  margin-right: 15px;
+}
+
+.hatizi_table td {
+  padding: 10px;
+}
+
+.hatizi_table h3 {
+  text-align: left;
+  padding-right: 30px;
+  white-space: nowrap;
+}
+
+.ymd-data {
+  display: flex;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.meisiki_btn input,
+.reset_btn input {
+  padding: 5px 50px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.create_data {
+  margin: 0 auto;
+  width: 40%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.create_data td,
+.create_data th {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.create_data th {
+  font-size: 1.8rem;
+  width: 10%;
+}
+
+.create_data td {
+  font-size: 1.8rem;
+  text-align: center;
+  width: 30%;
+}
+
+.create_data td P {
+  line-height: 3rem;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: #12327d;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+footer p {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+}
+
+/* レスポンシブ（SP表示の指定） */
+
+@media screen and (max-width: 767px) {
+  .no-sp {
+    display: none;
+  }
+
+  .no-pc {
+    display: block;
+  }
+
+  /* ヘッダー */
+  .header {
+    position: fixed;
+    padding: 0;
+    height: 80px;
+    overflow: visible;
+  }
+
+  .header-ttl {
+    margin-bottom: 0;
+    font-size: 2.8rem;
+    justify-content: center;
+  }
+
+  .hamburger_icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  .fa-bars {
+    font-size: 3rem;
+  }
+
+  .hamburger-nav {
+    display: none;
+    background: rgba(255, 255, 255, 0.8);
+    color: #12327d;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .hamburger-nav ul li a {
+    display: block;
+    padding-left: 30px;
+    font-size: 1.8rem;
+    line-height: 4rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+  }
+
+  .attention {
+    margin-top: 100px;
+  }
+
+  .create_data {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .create_data th {
+    width: 30%;
+  }
+
+  .create_data td {
+    width: 70%;
+  }
+
+  .spec ul li {
+    line-height: 4rem;
+  }
+}
