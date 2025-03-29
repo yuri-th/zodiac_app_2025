@@ -14,8 +14,12 @@ function butotnClick() {
     console.log(a);
   }
 
-  let str = document.getElementById("wareki").value;
-  let year = document.getElementById("year").value;
+  let wareki = document.getElementById("wareki").value;
+  let str = wareki;
+  let year =
+    wareki === "seireki"
+      ? Number(document.getElementById("yearInput").value)
+      : Number(document.getElementById("year").value);
   let month = document.getElementById("month").value;
   let day = document.getElementById("day").value;
   let hour = document.getElementById("hour").value;
@@ -10178,12 +10182,32 @@ function butotnClick() {
     msg5.innerText = output;
   }
 
-  if (str == "syowa") {
-    year = Number(year) - 1925;
-  } else if (str == "heisei") {
-    year = Number(year) - 1988;
-  } else if (str == "reiwa") {
-    year = Number(year) - 2018;
+  // 西暦を和暦に変換
+  if (wareki === "seireki") {
+    const seirekiYear = Number(year);
+    if (seirekiYear >= 1926 && seirekiYear <= 1988) {
+      str = "syowa";
+      year = seirekiYear - 1925;
+    } else if (seirekiYear >= 1989 && seirekiYear <= 2018) {
+      str = "heisei";
+      year = seirekiYear - 1988;
+    } else if (seirekiYear >= 2019) {
+      str = "reiwa";
+      year = seirekiYear - 2018;
+    } else {
+      alert("対象外の年です");
+      return;
+    }
+  }
+
+  if (wareki !== "seireki") {
+    if (str == "syowa") {
+      year = Number(year) - 1925;
+    } else if (str == "heisei") {
+      year = Number(year) - 1988;
+    } else if (str == "reiwa") {
+      year = Number(year) - 2018;
+    }
   }
 
   if (month == 0) {
@@ -10531,7 +10555,28 @@ function butotnClick() {
   }
 
   //日の干の計算
-  year = document.getElementById("year").value; //年のリセット
+  // 年のリセット
+  year =
+    wareki === "seireki"
+      ? Number(document.getElementById("yearInput").value)
+      : Number(document.getElementById("year").value);
+
+  if (wareki === "seireki") {
+    const seirekiYear = Number(year);
+    if (seirekiYear >= 1926 && seirekiYear <= 1988) {
+      str = "syowa";
+      year = seirekiYear - 1925;
+    } else if (seirekiYear >= 1989 && seirekiYear <= 2018) {
+      str = "heisei";
+      year = seirekiYear - 1988;
+    } else if (seirekiYear >= 2019) {
+      str = "reiwa";
+      year = seirekiYear - 2018;
+    } else {
+      alert("対象外の年です");
+      return;
+    }
+  }
 
   //計算式１
   let hiamari = 0;

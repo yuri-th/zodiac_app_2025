@@ -13,21 +13,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-54047313-1"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "UA-54047313-1");
-    </script>
+    <script src="js/analytics.js"></script>
   </head>
 
   <body>
@@ -114,12 +100,13 @@
                 <td>
                   <div class="ymd-data">
                     <div>
-                      <select id="wareki">
+                      <select id="wareki" onchange="toggleYearInput()">
+                        <option value="seireki">西暦</option>
                         <option value="syowa">昭和</option>
                         <option value="heisei">平成</option>
                         <option value="reiwa">令和</option>
                       </select>
-                      <select id="year">
+                      <select id="year" style="display: none">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -184,6 +171,15 @@
                         <option value="62">62</option>
                         <option value="63">63</option>
                       </select>
+                      <!-- 西暦用インプット -->
+                      <input
+                        type="number"
+                        id="yearInput"
+                        placeholder="1984"
+                        min="1900"
+                        max="2100"
+                        class="year-input"
+                      />
                       <span>年</span>
                     </div>
                     <div>
@@ -394,5 +390,20 @@
     </footer>
     <script src="zodiac_app/js/koyomi.js"></script>
     <script src="zodiac_app/js/main.js"></script>
+    <script>
+      function toggleYearInput() {
+        const wareki = document.getElementById("wareki").value;
+        const yearSelect = document.getElementById("year");
+        const yearInput = document.getElementById("yearInput");
+
+        if (wareki === "seireki") {
+          yearSelect.style.display = "none";
+          yearInput.style.display = "inline-block";
+        } else {
+          yearSelect.style.display = "inline-block";
+          yearInput.style.display = "none";
+        }
+      }
+    </script>
   </body>
 </html>

@@ -197,6 +197,10 @@ footer p {
   font-size: 1.2rem;
 }
 
+.year-input {
+  padding: 2.5px;
+}
+
 /* レスポンシブ（SP表示の指定） */
 
 @media screen and (max-width: 767px) {
