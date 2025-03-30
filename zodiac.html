@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-
     <title>四柱推命 命式作成</title>
-
+    <link rel="stylesheet" href="zodiac_app/css/common.css" />
     <link rel="stylesheet" href="zodiac_app/css/hatizi.css" />
     <link rel="stylesheet" href="zodiac_app/css/ress.min.css" />
     <script
@@ -21,13 +20,15 @@
       <div class="contents_width">
         <h1 class="header-ttl">
           <a href="zodiac.html">
-            <i class="fas fa-yin-yang"></i>&ensp;命式作成ツール
+            <i class="fas fa-yin-yang yin-yang-space"></i>命式作成<i
+              class="fas fa-dog dog-ico-space"
+            ></i>
           </a>
         </h1>
         <nav class="header-nav no-sp">
           <ul class="header-nav-list">
             <li class="header-nav-item">
-              <a href="https://www.mituki-y.com/">ホーム</a>
+              <a href="https://www.mituki-y.com/" target="_blank">ホーム</a>
             </li>
             <li class="header-nav-item"><a href="zodiac.html">命式作成</a></li>
             <li class="header-nav-item">
@@ -41,10 +42,18 @@
         <div class="no-pc hamburger-nav">
           <ul>
             <li>
-              <a href="https://www.mituki-y.com/" target="_blank">ホーム</a>
+              <a href="https://www.mituki-y.com/" target="_blank"
+                ><i class="fas fa-paw"></i>&ensp;ホーム</a
+              >
             </li>
-            <li><a href="zodiac.html">命式作成</a></li>
-            <li><a href="solar-time.html" target="_blank">真正生時</a></li>
+            <li>
+              <a href="zodiac.html"><i class="fas fa-paw"></i>&ensp;命式作成</a>
+            </li>
+            <li>
+              <a href="solar-time.html"
+                ><i class="fas fa-paw"></i>&ensp;真正生時</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -52,7 +61,7 @@
     <section class="hatizi_contents">
       <div class="contents_width">
         <h3 class="attention">
-          <i class="fas fa-pen-nib"></i>&ensp;ご利用前にお読みください。
+          <i class="fas fa-paw"></i>&ensp;ご利用前にお読みください。
         </h3>
         <div class="spec">
           <ul>
@@ -175,9 +184,9 @@
                       <input
                         type="number"
                         id="yearInput"
-                        placeholder="1984"
-                        min="1900"
-                        max="2100"
+                        placeholder="1926"
+                        min="1926"
+                        max="2025"
                         class="year-input"
                       />
                       <span>年</span>
@@ -336,7 +345,12 @@
             </table>
             <div class="btn">
               <div class="meisiki_btn">
-                <input type="button" value="命式作成" id="meisiki" />
+                <input
+                  type="button"
+                  value="命式作成"
+                  id="meisiki"
+                  onclick="return validateDateRange()"
+                />
               </div>
               <div class="reset_btn">
                 <input type="reset" value="リセット" id="resetButton" />
@@ -348,25 +362,23 @@
             <tr>
               <th>年柱</th>
               <td>
-                <p><span id="msg"></span></p>
+                <span id="msg"></span>
               </td>
             </tr>
             <tr>
               <th>月柱</th>
-              <td>
-                <p><span id="msg2"></span><span id="msg5"></span></p>
-              </td>
+              <td><span id="msg2"></span><br /><span id="msg5"></span></td>
             </tr>
             <tr>
               <th>日柱</th>
               <td>
-                <p><span id="msg3"></span></p>
+                <span id="msg3"></span>
               </td>
             </tr>
             <tr>
               <th>時柱</th>
               <td>
-                <p><span id="msg4"></span></p>
+                <span id="msg4"></span>
               </td>
             </tr>
             <tr>
@@ -382,6 +394,13 @@
               </td>
             </tr>
           </table>
+        </div>
+        <div class="meiri-hp-link">
+          <a
+            href="https://www.mituki-y.com/courses/fpa/whats/#whatsClass"
+            target="_blank"
+            >四柱推命の基本の読み解き方について</a
+          >
         </div>
       </div>
     </section>
@@ -403,6 +422,50 @@
           yearSelect.style.display = "inline-block";
           yearInput.style.display = "none";
         }
+      }
+    </script>
+    <script>
+      function validateDateRange() {
+        const wareki = document.getElementById("wareki").value;
+        const month = document.getElementById("month").value;
+        const day = document.getElementById("day").value;
+        let year;
+
+        if (wareki === "seireki") {
+          year = document.getElementById("yearInput").value;
+        } else {
+          const warekiYear = parseInt(
+            document.getElementById("year").value,
+            10
+          );
+          switch (wareki) {
+            case "syowa":
+              year = 1925 + warekiYear;
+              break;
+            case "heisei":
+              year = 1988 + warekiYear;
+              break;
+            case "reiwa":
+              year = 2018 + warekiYear;
+              break;
+          }
+        }
+
+        if (year < 1926 || year > 2026) {
+          alert("対象外の年です");
+          return false;
+        }
+
+        const inputDate = new Date(`${year}-${month}-${day}`);
+        const startDate = new Date(1926, 11, 26); // 月は0から始まるので11=12月
+        const endDate = new Date(2026, 1, 3); // 2月3日
+
+        if (inputDate < startDate || inputDate > endDate) {
+          alert("対象外の期間です");
+          return false;
+        }
+
+        return true;
       }
     </script>
   </body>

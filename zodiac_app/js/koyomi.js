@@ -10195,7 +10195,6 @@ function butotnClick() {
       str = "reiwa";
       year = seirekiYear - 2018;
     } else {
-      alert("対象外の年です");
       return;
     }
   }
@@ -10516,41 +10515,43 @@ function butotnClick() {
     "癸亥",
   ];
 
+  // 順行運
   for (let i = 0; i < daiungetusi.length; i++) {
     if (msgdaiun.innerText == ma1daiun && msg2.innerText == daiungetusi[i]) {
       output = daiungetusi[i + 1];
-      msgdaiun.innerText = ma1daiun + output;
+      msgdaiun.innerText = ma1daiun + "歳〜" + output;
       output = daiungetusi[i + 2];
-      msgdaiun1.innerText = ma1daiun + 10 + output;
+      msgdaiun1.innerText = ma1daiun + 10 + "歳〜" + output;
       output = daiungetusi[i + 3];
-      msgdaiun2.innerText = ma1daiun + 20 + output;
+      msgdaiun2.innerText = ma1daiun + 20 + "歳〜" + output;
       output = daiungetusi[i + 4];
-      msgdaiun3.innerText = ma1daiun + 30 + output;
+      msgdaiun3.innerText = ma1daiun + 30 + "歳〜" + output;
       output = daiungetusi[i + 5];
-      msgdaiun4.innerText = ma1daiun + 40 + output;
+      msgdaiun4.innerText = ma1daiun + 40 + "歳〜" + output;
       output = daiungetusi[i + 6];
-      msgdaiun5.innerText = ma1daiun + 50 + output;
+      msgdaiun5.innerText = ma1daiun + 50 + "歳〜" + output;
       output = daiungetusi[i + 7];
-      msgdaiun6.innerText = ma1daiun + 60 + output;
+      msgdaiun6.innerText = ma1daiun + 60 + "歳〜" + output;
     }
   }
 
+  // 逆行運
   for (let i = 120; i > 0; i--) {
     if (msgdaiun.innerText == ma2daiun && msg2.innerText == daiungetusi[i]) {
       output = daiungetusi[i - 1];
-      msgdaiun.innerText = ma2daiun + output;
+      msgdaiun.innerText = ma2daiun + "歳〜" + output;
       output = daiungetusi[i - 2];
-      msgdaiun1.innerText = ma2daiun + 10 + output;
+      msgdaiun1.innerText = ma2daiun + 10 + "歳〜" + output;
       output = daiungetusi[i - 3];
-      msgdaiun2.innerText = ma2daiun + 20 + output;
+      msgdaiun2.innerText = ma2daiun + 20 + "歳〜" + output;
       output = daiungetusi[i - 4];
-      msgdaiun3.innerText = ma2daiun + 30 + output;
+      msgdaiun3.innerText = ma2daiun + 30 + "歳〜" + output;
       output = daiungetusi[i - 5];
-      msgdaiun4.innerText = ma2daiun + 40 + output;
+      msgdaiun4.innerText = ma2daiun + 40 + "歳〜" + output;
       output = daiungetusi[i - 6];
-      msgdaiun5.innerText = ma2daiun + 50 + output;
+      msgdaiun5.innerText = ma2daiun + 50 + "歳〜" + output;
       output = daiungetusi[i - 7];
-      msgdaiun6.innerText = ma2daiun + 60 + output;
+      msgdaiun6.innerText = ma2daiun + 60 + "歳〜" + output;
     }
   }
 

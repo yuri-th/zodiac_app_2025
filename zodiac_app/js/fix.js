@@ -1,6 +1,10 @@
 function butotnClick() {
-  let str = document.getElementById("wareki").value;
-  let year = document.getElementById("year").value;
+  let wareki = document.getElementById("wareki").value;
+  let str = wareki;
+  let year =
+    wareki === "seireki"
+      ? Number(document.getElementById("yearInput").value)
+      : Number(document.getElementById("year").value);
   let month = document.getElementById("month").value;
   let day = document.getElementById("day").value;
   let hour = document.getElementById("hour").value;
@@ -141,12 +145,30 @@ function butotnClick() {
     }
   }
 
+  msg2.innerText = Number(local.value) + "分";
+
   const now = new Date(year, month - 1, day, hour, min);
 
-  //和暦変換
-  msg.innerText = now.toLocaleString("ja-JP-u-ca-japanese", { era: "long" });
-
-  msg2.innerText = Number(local.value) + "分";
+  //西暦/和暦変換
+  if (wareki === "seireki") {
+    // 西暦表示（年月日 + 時分秒）
+    msg.innerText = now.toLocaleString("ja-JP", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } else {
+    msg.innerText = now.toLocaleString("ja-JP-u-ca-japanese", {
+      era: "long",
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
 }
 
 let sinsei = document.getElementById("sinsei");

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>真正生時（真太陽時）</title>
-
+    <link rel="stylesheet" href="zodiac_app/css/common.css" />
     <link rel="stylesheet" href="zodiac_app/css/solar-time.css" />
     <link rel="stylesheet" href="zodiac_app/css/ress.min.css" />
     <script
@@ -20,13 +20,15 @@
       <div class="contents_width">
         <h1 class="header-ttl">
           <a href="zodiac.html">
-            <i class="fas fa-yin-yang"></i>&ensp;命式作成ツール
+            <i class="fas fa-yin-yang yin-yang-space"></i>真正生時<i
+              class="fas fa-dog dog-ico-space"
+            ></i>
           </a>
         </h1>
         <nav class="header-nav no-sp">
           <ul class="header-nav-list">
             <li class="header-nav-item">
-              <a href="https://www.mituki-y.com/">ホーム</a>
+              <a href="https://www.mituki-y.com/" target="_blank">ホーム</a>
             </li>
             <li class="header-nav-item"><a href="zodiac.html">命式作成</a></li>
             <li class="header-nav-item">
@@ -40,10 +42,18 @@
         <div class="no-pc hamburger-nav">
           <ul>
             <li>
-              <a href="https://www.mituki-y.com/" target="_blank">ホーム</a>
+              <a href="https://www.mituki-y.com/" target="_blank"
+                ><i class="fas fa-paw"></i>&ensp;ホーム</a
+              >
             </li>
-            <li><a href="zodiac.html">命式作成</a></li>
-            <li><a href="solar-time.html" target="_blank">真正生時</a></li>
+            <li>
+              <a href="zodiac.html"><i class="fas fa-paw"></i>&ensp;命式作成</a>
+            </li>
+            <li>
+              <a href="solar-time.html"
+                ><i class="fas fa-paw"></i>&ensp;真正生時</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -75,12 +85,13 @@
                 <td>
                   <div class="ymd-data">
                     <div>
-                      <select id="wareki">
+                      <select id="wareki" onchange="toggleYearInput()">
+                        <option value="seireki">西暦</option>
                         <option value="syowa">昭和</option>
                         <option value="heisei">平成</option>
                         <option value="reiwa">令和</option>
                       </select>
-                      <select id="year">
+                      <select id="year" style="display: none">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -143,8 +154,18 @@
                         <option value="60">60</option>
                         <option value="61">61</option>
                         <option value="62">62</option>
-                        <option value="63">63</option></select
-                      ><span>年</span>
+                        <option value="63">63</option>
+                      </select>
+                      <!-- 西暦用インプット -->
+                      <input
+                        type="number"
+                        id="yearInput"
+                        placeholder="1926"
+                        min="1926"
+                        max="2025"
+                        class="year-input"
+                      />
+                      <span>年</span>
                     </div>
                     <div>
                       <select name="lists_a" id="month">
@@ -492,7 +513,12 @@
             </table>
             <div class="btn">
               <div class="time_btn">
-                <input type="button" value="真正生時" id="sinsei" />
+                <input
+                  type="button"
+                  value="真正生時"
+                  id="sinsei"
+                  onclick="return validateDateRange()"
+                />
               </div>
               <div class="reset_btn">
                 <input type="reset" value="リセット" id="resetButton" />
@@ -522,11 +548,73 @@
           </table>
         </div>
       </div>
+      <div class="return-link">
+        <a href="zodiac.html">命式作成ページへ戻る</a>
+      </div>
     </section>
     <footer>
       <p>©&nbsp;Miwa&thinsp;LLC.</p>
     </footer>
     <script src="zodiac_app/js/fix.js"></script>
     <script src="zodiac_app/js/main.js"></script>
+    <script>
+      function toggleYearInput() {
+        const wareki = document.getElementById("wareki").value;
+        const yearSelect = document.getElementById("year");
+        const yearInput = document.getElementById("yearInput");
+
+        if (wareki === "seireki") {
+          yearSelect.style.display = "none";
+          yearInput.style.display = "inline-block";
+        } else {
+          yearSelect.style.display = "inline-block";
+          yearInput.style.display = "none";
+        }
+      }
+    </script>
+    <script>
+      function validateDateRange() {
+        const wareki = document.getElementById("wareki").value;
+        const month = document.getElementById("month").value;
+        const day = document.getElementById("day").value;
+        let year;
+
+        if (wareki === "seireki") {
+          year = document.getElementById("yearInput").value;
+        } else {
+          const warekiYear = parseInt(
+            document.getElementById("year").value,
+            10
+          );
+          switch (wareki) {
+            case "syowa":
+              year = 1925 + warekiYear;
+              break;
+            case "heisei":
+              year = 1988 + warekiYear;
+              break;
+            case "reiwa":
+              year = 2018 + warekiYear;
+              break;
+          }
+        }
+
+        if (year < 1926 || year > 2026) {
+          alert("対象外の年です");
+          return false;
+        }
+
+        const inputDate = new Date(`${year}-${month}-${day}`);
+        const startDate = new Date(1926, 11, 26);
+        const endDate = new Date(2026, 1, 3);
+
+        if (inputDate < startDate || inputDate > endDate) {
+          alert("対象外の期間です");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
   </body>
 </html>
