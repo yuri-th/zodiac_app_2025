@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
@@ -12,7 +12,16 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-WR5M4PLX3H"
+    ></script>
     <script src="zodiac_app/js/analytics.js"></script>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="命式" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
   </head>
 
   <body>
@@ -517,7 +526,7 @@
                   type="button"
                   value="真正生時"
                   id="sinsei"
-                  onclick="return validateDateRange()"
+                  onclick="return validateDateRange();"
                 />
               </div>
               <div class="reset_btn">
@@ -584,7 +593,7 @@
         } else {
           const warekiYear = parseInt(
             document.getElementById("year").value,
-            10
+            10,
           );
           switch (wareki) {
             case "syowa":
@@ -614,6 +623,11 @@
         }
 
         return true;
+      }
+    </script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js");
       }
     </script>
   </body>
